@@ -9,6 +9,7 @@ use Impactaweb\Eloquent\Search\Contracts\SearchTextInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 
+
 class SearchText extends BaseSearch implements SearchTextInterface
 {
 

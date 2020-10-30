@@ -6,6 +6,7 @@ namespace Impactaweb\Eloquent\Search\Macros;
 
 use Impactaweb\Eloquent\Search\Contracts\BaseMacroInterface;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class WhereLike implements BaseMacroInterface
 {
