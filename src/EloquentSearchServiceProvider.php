@@ -6,6 +6,7 @@ use Impactaweb\Eloquent\Search\Macros\OrSearch;
 use Impactaweb\Eloquent\Search\Macros\OrSearchBlock;
 use Impactaweb\Eloquent\Search\Macros\Search;
 use Impactaweb\Eloquent\Search\Macros\SearchBlock;
+use Impactaweb\Eloquent\Search\Macros\SearchText;
 use Impactaweb\Eloquent\Search\Macros\SearchWithQuerystring;
 use Impactaweb\Eloquent\Search\Macros\WhereLike;
 use Illuminate\Database\Eloquent\Builder;
@@ -41,5 +42,6 @@ class EloquentSearchServiceProvider extends ServiceProvider
         Builder::macro('searchQueryString', SearchWithQuerystring::register());
         Builder::macro('orSearch', OrSearch::register());
         Builder::macro('orSearchBlock', OrSearchBlock::register());
+        Builder::macro('searchText', SearchText::register());
     }
 }
