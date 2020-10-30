@@ -1,0 +1,20 @@
+{
+    "name": "impactaweb/eloquent-search",
+    "description": "Eloquent Search Tools",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jackson Moura",
+            "email": "jackson@impactaweb.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Impactaweb\\Eloquent\\": "src/"
+        }
+    },
+    "require": {
+    }
+}
