@@ -7,8 +7,8 @@ namespace Impactaweb\Eloquent\Search\Macros;
 use Impactaweb\Eloquent\Search\Abstracts\BaseSearch;
 use Impactaweb\Eloquent\Search\Contracts\SearchTextInterface;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-
 
 class SearchText extends BaseSearch implements SearchTextInterface
 {
@@ -34,8 +34,20 @@ class SearchText extends BaseSearch implements SearchTextInterface
                     throw ValidationException::withMessages(['Must provide search columns']);
                 }
 
+                // If search parts contains only one word, and this word is an integer
+                if (count($textParts) == 1 && is_numeric($textParts[0])) {
+                    foreach ($searchable as $column) {
+                        $query->orSearch($column, $textParts[0]);
+                    }
+                    return;
+                }
+
+                // Min word length
+                $minWordLength = config('eloquent_search.min_word_length_search_text');
                 foreach ($textParts as $search) {
-                    $query->whereLike($searchable, $search);
+                    if (Str::length($search) >= $minWordLength) {
+                        $query->whereLike($searchable, $search);
+                    }
                 }
             });
             return $this;

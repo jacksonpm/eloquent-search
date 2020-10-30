@@ -15,5 +15,6 @@ return [
         'not_in' => Impactaweb\Eloquent\Search\Operators\NotIn::class,
     ],
 
-    'querystring_separator' => '__'
+    'querystring_separator' => '__',
+    'min_word_length_search_text' => 3,
 ];
