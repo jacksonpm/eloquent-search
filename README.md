@@ -13,7 +13,7 @@ Bring all users wich have:
 
 Pure Eloquent:
 
-```
+```php
 User::where('tenant_id', 1)
 ->whereHas('profile', function($q) {
     $q->whereRaw('address LIKE %Foo%')
@@ -24,7 +24,8 @@ User::where('tenant_id', 1)
 ```
 
 Eloquent Search:
-```
+
+```php
 User::search('profile.address', 'contains', "Foo")-search('config.is_active', true)->search('tenant_id', 1)
 ```
 
@@ -37,7 +38,7 @@ Bring a list of user pictures, from a specific tenant, following the conditions:
 
 Pure Eloquent:
 
-```
+```php
 Profile::whereHas('config', function($q) {
    $q->where('is_active', true);
 })->where(function($q){
@@ -48,7 +49,7 @@ Profile::whereHas('config', function($q) {
 
 Eloquent Search
 
-```
+```php
 Profile::search('config.is_active', false)
 ->searchBlock([
    ['created_at', 'lte', '2000-01-01', 'or'],
@@ -64,7 +65,7 @@ Search all profiles wich: 
 
 Eloquent Search:
 
-```
+```php
 In profile Model:
 class Profile extends Model
 {
